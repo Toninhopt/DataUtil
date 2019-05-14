@@ -11,15 +11,19 @@ public class Data {
 	 */
 	public static boolean anoBissexto(int ano)
 	{
-		// IMPLEMENTAR
-		// Implemente a lógica a partir do Fluxograma dado em anexo!
-		
-		
-		
-		
-		
-		
-		return true;
+		if (ano % 4 == 0) {
+			if (ano % 100 == 0) {
+				if (ano % 400 == 0) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	
@@ -32,11 +36,16 @@ public class Data {
 	 */
 	public static int diasMes( Meses mes)
 	{
-		// IMPLEMENTAR
-		// Implemente a lógica a partir do Fluxograma dado em anexo!
+		if (mes == Meses.FEVEREIRO) {
+			throw new IllegalArgumentException("Se for fevereiro tem que passar o ano");
+		}
 		
-		
-		return 0;
+		if ((mes.getNumeroMes() <= 7 && mes.getNumeroMes() % 2 != 0) || (mes.getNumeroMes() >= 8 && mes.getNumeroMes() % 2 == 0)) {
+			return 31;
+		} else {
+			return 30;
+		}
+
 	}
 	
 
@@ -51,6 +60,17 @@ public class Data {
 	 */
 	public static int diasMes( Meses mes, int ano)
 	{
+			if (mes == Meses.FEVEREIRO) {
+				if (anoBissexto(ano)) {
+					return 29;
+				} else {
+					return 28;
+				}
+			} else {
+			return diasMes(mes);
+		} 
+	
+			
 		// Testa se o ano é bisseexto caso o mes seja Meses.FEVEREIRO
 		
 			
@@ -59,7 +79,7 @@ public class Data {
 		
 		
 		
-		return 0;
+		
 	}
 
 	
